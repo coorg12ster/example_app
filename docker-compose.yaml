@@ -24,6 +24,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - devops-network
+    command:  ["bash","-c","apt-get update && apt-get install -y docker.io && exec /usr/bin/tini -- /usr/local/bin/jenkins.sh"]
 
   postgres:
     image: postgres:15
