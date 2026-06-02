@@ -47,6 +47,8 @@ services:
       SONAR_JDBC_URL: jdbc:postgresql://postgres:5432/sonar
       SONAR_JDBC_USERNAME: sonar
       SONAR_JDBC_PASSWORD: sonar
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLED: "true"
+      SONAR_ES_JAVAADDITIONALOPTS: "-XX:MaxRAMPercentage=75.0"
     ports:
       - "9000:9000"
     volumes:
@@ -55,6 +57,8 @@ services:
       - sonarqube_extensions:/opt/sonarqube/extensions
     networks:
       - devops-network
+    mem_limit: 4g
+    mem_reservation: 2g
 
   registry:
     image: registry:2
