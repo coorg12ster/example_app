@@ -26,9 +26,13 @@ pipeline {
             }
         }
 
-        stage('Docker Build') {
+        stage('Docker Build and Push') {
             steps {
-                sh 'docker build -t spring-app .'
+                script {
+                    def imageName = 'localhost:5000/example_app:0.0.1-SNAPSHOT'
+                    sh 'docker build -t ' + imageName + ' .'
+                    sh 'docker push ' + imageName
+                }
             }
         }
     }
