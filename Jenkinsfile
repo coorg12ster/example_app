@@ -20,7 +20,7 @@ pipeline {
                     mvn sonar:sonar \
                     -Dsonar.projectKey=spring-app \
                     -Dsonar.host.url=http://sonarqube:9000 \
-                    -Dsonar.login=sqp_a2a2b89a43ebab835cbb4116e2ce075e66e0cf28
+                    -Dsonar.login=sqp_a6696c56a7ed1d1dcc7e0ab4b2a8444b7ad7c5c7
                     '''
                 }
             }
