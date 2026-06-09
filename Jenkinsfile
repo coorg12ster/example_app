@@ -43,6 +43,7 @@ pipeline {
             steps {
                 sh '''
                 docker run --rm \
+                    --entrypoint snyk \
                     -e SNYK_TOKEN=$SNYK_TOKEN \
                     -v /var/run/docker.sock:/var/run/docker.sock \
                     snyk/snyk:maven-3-jdk-21-preview \
