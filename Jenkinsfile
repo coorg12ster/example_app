@@ -45,7 +45,7 @@ pipeline {
                 docker run --rm \
                     -e SNYK_TOKEN=$SNYK_TOKEN \
                     -v /var/run/docker.sock:/var/run/docker.sock \
-                    snyk/snyk:latest \
+                    snyk/snyk:maven-3-jdk-21-preview \
                     container test local-registry:5000/example_app:0.0.1 --file=Dockerfile
                 '''
             }
