@@ -33,7 +33,7 @@ pipeline {
         stage('Docker Build and Push') {
             steps {
                 script {
-                    def imageName = 'local-registry:5000/example_app:0.0.1-SNAPSHOT'
+                    def imageName = 'registry:5000/example_app:0.0.1-SNAPSHOT'
                     sh 'docker build -t ' + imageName + ' .'
                     sh 'docker push ' + imageName
                 }
@@ -46,7 +46,7 @@ pipeline {
                     -e SNYK_TOKEN=$SNYK_TOKEN \
                     -v /var/run/docker.sock:/var/run/docker.sock \
                     snyk/snyk:maven-3-jdk-21-preview \
-                    container test local-registry:5000/example_app:0.0.1-SNAPSHOT --file=Dockerfile
+                    container test registry:5000/example_app:0.0.1-SNAPSHOT --file=Dockerfile
                 '''
             }
             }
