@@ -6,6 +6,7 @@ pipeline {
     }
     environment {
         SNYK_TOKEN = credentials('snyk-token')
+        SONAR_TOKEN = credentials('sonar-token')
     }
 
     stages {
@@ -23,7 +24,7 @@ pipeline {
                     mvn sonar:sonar \
                     -Dsonar.projectKey=spring-app \
                     -Dsonar.host.url=http://sonarqube:9000 \
-                    -Dsonar.login=sqp_a6696c56a7ed1d1dcc7e0ab4b2a8444b7ad7c5c7
+                    -Dsonar.login=$SONAR_TOKEN
                     '''
                 }
             }
