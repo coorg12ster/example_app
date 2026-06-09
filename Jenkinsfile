@@ -4,6 +4,9 @@ pipeline {
     tools {
         maven 'Maven'
     }
+    environment {
+        SNYK_TOKEN = credentials('snyk-token')
+    }
 
     stages {
 
@@ -35,5 +38,16 @@ pipeline {
                 }
             }
         }
+        stage('Snyk Container Test') {
+            steps {
+                sh '''
+                docker run --rm \
+                    -e SNYK_TOKEN=$SNYK_TOKEN \
+                    -v /var/run/docker.sock:/var/run/docker.sock \
+                    snyk/snyk:latest \
+                    container test local-registry:5000/example_app:0.0.1 --file=Dockerfile
+                '''
+            }
+            }
     }
 }
