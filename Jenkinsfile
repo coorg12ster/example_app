@@ -42,7 +42,7 @@ pipeline {
         stage('Snyk Container Test') {
             steps {
                 sh '''
-                docker run --rm \
+                docker run --rm --platform linux/amd64 \
                     --entrypoint snyk \
                     -e SNYK_TOKEN=$SNYK_TOKEN \
                     -v /var/run/docker.sock:/var/run/docker.sock \
