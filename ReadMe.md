@@ -64,6 +64,9 @@ Click Save.
 
 Same for the Synk 
 
+Secret: Snyk Token ID\
+ID: snyk-token\
+
 
 # copy temporary password 
 

@@ -50,6 +50,11 @@ pipeline {
                     container test localhost:5000/example_app:0.0.1-SNAPSHOT || true
                 '''
             }
+        }
+        stage('SCA') {
+            steps {
+                sh 'mvn snyk:test -Dsnyk.token=$SNYK_TOKEN || true'
             }
+        }
     }
 }
