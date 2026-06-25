@@ -1,4 +1,4 @@
-Please fork this repo to your account then start the process\
+
 \
 Install docker client, docker-engine\
 `brew install docker`\
